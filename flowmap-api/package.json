@@ -1,0 +1,25 @@
+{
+  "name": "y",
+  "version": "1.0.0",
+  "description": "FlowMap API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RK3nshin/FlowMap_React_express.git"
+  },
+  "keywords": [
+    "API",
+    "UNIFEI",
+    "WEB",
+    "FLOWMAP"
+  ],
+  "author": "Guilbert e Alexandre",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RK3nshin/FlowMap_React_express/issues"
+  },
+  "homepage": "https://github.com/RK3nshin/FlowMap_React_express#readme"
+}

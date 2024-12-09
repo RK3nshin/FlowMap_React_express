@@ -1,0 +1,40 @@
+main {
+    padding: 20px;
+    z-index: 1;
+    margin-top: 75px;
+}
+
+
+.about, .mission, .team {
+    background: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+
+h2, h3 {
+    color: #272f34;
+    margin-bottom: 0.95rem;
+}
+
+h3{
+    color: #2d424f;
+    font-size: 1.1rem;
+}
+
+p{
+    font-size: 1rem;
+    line-height: 1.8; 
+
+}
+
+.team-member {
+    margin: 10px 0;
+    border-bottom: 1px solid #dddddd;
+    padding-bottom: 10px;
+}
+
+

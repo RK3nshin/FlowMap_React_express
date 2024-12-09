@@ -1,0 +1,142 @@
+
+.main-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 760px;
+    padding: 20px;
+    width: 100vw;
+}
+
+.right-login, .left-login {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.right-login > h1 {
+    color: #131126;
+    font-size: 2rem;
+    width: 100%;
+}
+
+
+.Img-login {
+    width: 35vw;
+    max-width: 450px;
+}
+
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffc0cb;
+    border-radius: 25px;
+    box-shadow: 0 20px 50px #00000056;
+    width: 100%;
+    max-width: 550px;
+    height: auto;
+    padding: 30px;
+}
+
+.login-container > h1 {
+    color: #131126 ;
+    font-weight: 900;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.text-container {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.text-container label {
+    color: black;
+    margin-bottom: 5px;
+    display: block;
+    text-align: justify;
+    margin: 10px
+}
+
+.text-container input {
+    background: #F9E6E6;
+    border-radius: 10px;
+    box-shadow: 0 20px 50px #00000056;
+    width: 100%;
+    height: 40px;
+    border: none;
+    font-size: 1rem;
+    color: #131126;
+    padding: 0 10px;
+}
+
+
+.login {
+    align-self: center;
+    background: #f77b39;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 20px 50px -12px #00000056;
+    width: 150px;
+    padding: 15px;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: #2f2b5e;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.login:hover {
+    background: #f56517;
+}
+
+
+@media (max-width: 1047px) {
+    .main-login {
+        margin-top: 125px;
+        flex-direction: column;
+    }
+
+    .right-login > h1 {
+        margin-top: 75px;
+        font-size: 1.8rem;
+    }
+
+    .Img-login {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    .login-container {
+        width: 80vw;
+        padding: 20px;
+    }
+
+    .login-container > h1 {
+        font-size: 1.6rem;
+    }
+
+}
+
+@media (max-width: 733px) {
+    .main-login {
+        margin-top: 100px;
+    }
+
+    .right-login > h1 {
+        font-size: 1.45rem;
+    }
+
+    .login-container {
+        width: 90vw;
+    }
+
+    .login-container > h1 {
+        font-size: 1.35rem;
+    }
+}
