@@ -11,6 +11,15 @@ app.use(express.json());
 app.use(cors());
 app.use(bodyparser.json());
 
+app.use(
+  cors({
+    origin: "https://flow-map-react-express-4owj.vercel.app",
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true, // Se precisar enviar cookies ou credenciais
+  })
+);
+
 let conString = config.urlConnection;
 let client = new Client(conString);
 
