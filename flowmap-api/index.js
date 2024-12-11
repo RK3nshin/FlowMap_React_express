@@ -8,97 +8,85 @@ const config = require("./config");
 
 const app = express();
 app.use(express.json());
-app.use(cors());
 app.use(bodyparser.json());
 
-app.use(cors({ origin: 'https://flow-map-react-express-bvef.vercel.app' }));
-
-app.options("*", function(req, res) {
-  res.header("Access-Control-Allow-Origin", "https://flow-map-react-express-4owj.vercel.app");
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  res.sendStatus(200); 
-});
-const corsOptions ={
-  origin:'"https://flow-map-react-express-4owj.vercel.app', 
-  credentials:true,           
-  optionSuccessStatus:200
-}
+// Configuração de CORS
+const corsOptions = {
+    origin: 'https://flow-map-react-express-4owj.vercel.app', // Substitua pela origem correta
+    credentials: true,
+    methods: 'GET,POST,PUT,DELETE,OPTIONS',
+    allowedHeaders: 'Origin,X-Requested-With,Content-Type,Accept'
+};
 app.use(cors(corsOptions));
 
+// Banco de dados
 let conString = config.urlConnection;
 let client = new Client(conString);
 
-// Conectar ao banco de dados
 client.connect((err) => {
-  if (err) {
-    return console.error("Não foi possível conectar ao banco.", err);
-  }
-  console.log("Conectado ao banco com sucesso.");
+    if (err) {
+        console.error("Não foi possível conectar ao banco.", err);
+    } else {
+        console.log("Conectado ao banco com sucesso.");
+    }
 });
 
 // Rota principal
 app.get("/", (req, res) => {
-  console.log("Response ok.");
-  res.send("Ok – Servidor disponível.");
+    res.send("Ok – Servidor disponível.");
 });
 
 // Rota de registro (signup)
 app.post("/signup", async (req, res) => {
-  const { nome, email, password } = req.body;
+    const { nome, email, password } = req.body;
 
-  try {
-    // Verificar se usuário já existe
-    const userCheck = await client.query("SELECT * FROM users WHERE email = $1", [email]);
-    if (userCheck.rows.length > 0) {
-      return res.status(400).json({ error: "Email já cadastrado." });
+    try {
+        const userCheck = await client.query("SELECT * FROM users WHERE email = $1", [email]);
+        if (userCheck.rows.length > 0) {
+            return res.status(400).json({ error: "Email já cadastrado." });
+        }
+
+        const passwordHash = await bcrypt.hash(password, 10);
+
+        const newUser = await client.query(
+            "INSERT INTO users (nome, email, password_hash) VALUES ($1, $2, $3) RETURNING id, nome, email",
+            [nome, email, passwordHash]
+        );
+
+        res.status(201).json(newUser.rows[0]);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).json({ error: "Erro no servidor." });
     }
-
-    // Criar hash da senha
-    const passwordHash = await bcrypt.hash(password, 10);
-
-    // Inserir novo usuário no banco
-    const newUser = await client.query(
-      "INSERT INTO users (nome, email, password_hash) VALUES ($1, $2, $3) RETURNING id, nome, email",
-      [nome, email, passwordHash]
-    );
-
-    res.status(201).json(newUser.rows[0]);
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).json({ error: "Erro no servidor." });
-  }
 });
 
 // Rota de login
 app.post("/login", async (req, res) => {
-  const { email, password } = req.body;
+    const { email, password } = req.body;
 
-  try {
-    const userResult = await client.query("SELECT * FROM users WHERE email = $1", [email]);
-    const user = userResult.rows[0];
+    try {
+        const userResult = await client.query("SELECT * FROM users WHERE email = $1", [email]);
+        const user = userResult.rows[0];
 
-    if (!user) {
-      return res.status(400).json({ error: "Usuário não encontrado." });
+        if (!user) {
+            return res.status(400).json({ error: "Usuário não encontrado." });
+        }
+
+        const validPassword = await bcrypt.compare(password, user.password_hash);
+        if (!validPassword) {
+            return res.status(401).json({ error: "Senha incorreta." });
+        }
+
+        const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: "1h" });
+
+        res.json({ 
+            token, 
+            user: { id: user.id, nome: user.nome, email: user.email } 
+        });
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).json({ error: "Erro no servidor." });
     }
-
-    // Comparar senha
-    const validPassword = await bcrypt.compare(password, user.password_hash);
-    if (!validPassword) {
-      return res.status(401).json({ error: "Senha incorreta." });
-    }
-
-    // Gerar Token JWT
-    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: "1h" });
-
-    res.json({ 
-      token, 
-      user: { id: user.id, nome: user.nome, email: user.email } 
-    });
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).json({ error: "Erro no servidor." });
-  }
 });
 
 // rotas task 
