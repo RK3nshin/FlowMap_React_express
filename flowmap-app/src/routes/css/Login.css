@@ -5,7 +5,7 @@
     align-items: center;
     height: 760px;
     padding: 20px;
-    width: 100vw;
+    width: 100%;
 }
 
 .right-login, .left-login {
@@ -45,13 +45,12 @@
     color: #131126 ;
     font-weight: 900;
     font-size: 1.8rem;
-    margin-bottom: 15px;
     width: 100%;
 }
 
 .text-container {
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
 }
 
 .text-container label {
@@ -95,10 +94,10 @@
     background: #f56517;
 }
 
-
 @media (max-width: 1047px) {
     .main-login {
-        margin-top: 125px;
+        margin-top: 160px;
+        margin-bottom: 100px;
         flex-direction: column;
     }
 
@@ -125,7 +124,7 @@
 
 @media (max-width: 733px) {
     .main-login {
-        margin-top: 100px;
+        margin-top: 125px;
     }
 
     .right-login > h1 {

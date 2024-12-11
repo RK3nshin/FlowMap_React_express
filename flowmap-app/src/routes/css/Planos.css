@@ -3,63 +3,74 @@ main {
     padding: 20px;
 }
 
+#content-text {
+    text-align: center;
+    margin: 20px auto;
+}
 
-#plans {
+#planos-title {
+    font-size: 2rem;
+    color: #172b4d;
+    margin-bottom: 20px;
+}
+
+.planos-description {
+    font-size: 1rem;
+    color: #172b4d;
+    margin-bottom: 30px;
+}
+
+#content-cards {
     display: flex;
     justify-content: center;
-    height: 75vh;
     gap: 20px;
-    flex-wrap: wrap; 
+    margin: 20px auto;
+    margin-top: 40px;
+    flex-wrap: wrap;
 }
 
 .card {
-    background: #ffffff;
-    border: 1px solid #dddddd;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    width: 300px; 
+    max-width: 300px;
+    text-align: center;
 }
-
-
 
 .card h2 {
+    font-size: 1.25em;
     margin-bottom: 10px;
-    color: #35424a;
 }
 
-.price {
-    font-size: 1.5rem;
-    color: #27ae60;
-    margin-bottom: 15px;
+.card .price {
+    color: green;
+    font-size: 2rem;
+    margin: 10px 0;
 }
-
 
 .card ul {
-    list-style-type: none;
-    padding-left: 0;
+    list-style: none;
+    padding: 0;
 }
 
-.card ul li {
+.card li {
     margin: 30px 0;
+    font-size: 1em;
+    color: #555;
 }
 
+.card:hover {
+    transform: translateY(-5px);
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 6px 8px #00000033;
+}
 
-@media (max-width: 1310px) {
-    #plans {
-        flex-direction: column; 
-        align-items: center;
-        height: auto;
-    }
-
-    .card {
-        width: 75%;
-        padding: 20px;
-        margin-bottom: 20px;
-        text-align: center;
-    }
-
-    .price {
-        font-size: 1.3rem;
+/* Responsividade para celulares */
+@media (max-width: 640px) {
+    .card li {
+        margin: 15px 0;
+        font-size: 1em;
+        color: #555;
     }
 }
