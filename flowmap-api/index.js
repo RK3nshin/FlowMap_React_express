@@ -2,7 +2,7 @@ const express = require("express");
 const { Client } = require("pg");
 const cors = require("cors");
 const bodyparser = require("body-parser");
-const bcrypt = require("bcrypt");
+const bcrypt = require('bcryptjs');
 const jwt = require("jsonwebtoken");
 const config = require("./config");
 
