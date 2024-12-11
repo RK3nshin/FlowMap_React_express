@@ -17,8 +17,12 @@ app.options("*", function(req, res) {
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   res.sendStatus(200); 
 });
-
-
+const corsOptions ={
+  origin:'"https://flow-map-react-express-4owj.vercel.app', 
+  credentials:true,           
+  optionSuccessStatus:200
+}
+app.use(cors(corsOptions));
 
 let conString = config.urlConnection;
 let client = new Client(conString);
