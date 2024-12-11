@@ -23,7 +23,7 @@ export default function Login() {
     console.log("aqui")
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:9082/login', form);
+      const response = await axios.post('https://flow-map-react-express-q4eh.vercel.app/api/login', form);
       alert('Login realizado com sucesso!');
       console.log(response.data);
   

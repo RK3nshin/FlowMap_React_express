@@ -24,7 +24,7 @@ export default function Signup() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:9082/signup', form);
+            const response = await axios.post('https://flow-map-react-express-q4eh.vercel.app/signup', form);
             alert('Cadastro realizado com sucesso!');
             console.log(response.data);
             goLogin(); 

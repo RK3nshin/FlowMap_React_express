@@ -27,7 +27,7 @@ export default function Board() {
 
   useEffect(() => {
     if (userId) {
-      axios.get(`http://localhost:9082/tasks?userId=${userId}`)
+      axios.get(`https://flow-map-react-express-q4eh.vercel.app/tasks?userId=${userId}`)
         .then((response) => {
           const tasksData = response.data;
           const newTasks = {
@@ -61,7 +61,7 @@ export default function Board() {
     }
     console.log(date)
     console.log(priority)
-    axios.post('http://localhost:9082/tasks', {
+    axios.post('https://flow-map-react-express-q4eh.vercel.app/tasks', {
       title,
       description,
       priority,
