@@ -1,7 +1,7 @@
 import React from 'react'
-
+import Board from '../components/Board'
 export default function Kanban() {
   return (
-    <div>Kanban</div>
+    <div><Board/></div>
   )
 }

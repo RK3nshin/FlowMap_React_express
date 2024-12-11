@@ -16,43 +16,41 @@ import{createBrowserRouter, RouterProvider} from "react-router-dom"
 
 const router = createBrowserRouter([
   {
-    path:"/",
-    element:<App/>,
+    path: "/",
+    element: <App />,
     children: [
-    {
-        path:"/",
-        element:<Home/>,
-    },
-    {
-      path:"sobreNos",
-      element:<SobreNos/>
-    },
-    {
-      path:"assinaturas",
-      element:<Planos/>,
-
-    },
-    {
-      path:"login",
-      element:<Login/>
-    },
-    {
-      path:"signup",
-      element:<Signup/>
-    },
-    {
-      path:"ferramentas",
-      element:<Servicos/>
-    },
-  ],
-
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "sobreNos",
+        element: <SobreNos />,
+      },
+      {
+        path: "assinaturas",
+        element: <Planos />,
+      },
+      {
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "signup",
+        element: <Signup />,
+      },
+      {
+        path: "ferramentas",
+        element: <Servicos />,
+      },
+    ],
   },
   {
-    path:"/kanban",
-    element:<Kanban/>
-  
-  }
-])
+    path: "/kanban",
+    element: <Kanban />,
+  },
+]);
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

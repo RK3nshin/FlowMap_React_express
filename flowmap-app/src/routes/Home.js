@@ -9,7 +9,6 @@ import"./css/Home.css";
 export default function Home() {
   return (
     <div>
-  
       <main>
         <div id="presentation">
           <div id="presentation-container">

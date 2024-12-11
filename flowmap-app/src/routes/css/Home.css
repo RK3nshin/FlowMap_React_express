@@ -1,14 +1,12 @@
-body {
-    background-color: #f4fbff;
-}
-
 main {
     z-index: 1;
     margin-top: 60px;
     width: 100%;
+    
 }
 
 #presentation {
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -32,11 +30,11 @@ main {
 #title-presentation {
     margin-bottom: 15px;
     font-weight: bolder;
-    font-size: 2.5rem;
+    font-size: 40px;
 }
 
 #description-presentation {
-    font-size: 1.6rem;
+    font-size: 25px;
     font-style: italic;
 }
 
@@ -58,27 +56,28 @@ main {
 
 #home-main img {
     margin: 20px;
-    max-width: 80%;
+    max-width: 60%;
     height: auto;
 }
 
 .title-main {
-    font-size: 1.9rem;
+    font-size: 30px;
     color: #131126;
-    margin-top: 10px;
+    margin: 20px;
+    margin-top: 30px;
     padding: 10px;
 }
 
 .text-main {
     color: #0e2538;
-    font-size: 1.1rem;
+    font-size: large;
     margin: 10px 100px;
     padding: 10px;
 }
 
 @media (max-width: 1047px) {
+
     #presentation {
-        margin-top: 15px;
         flex-direction: column;
         height: auto;
         background: linear-gradient(30deg, #FF7327, #FF7327 50%, #4a87b9 40%, #4a87b9);
@@ -97,33 +96,5 @@ main {
 
     .text-main {
         margin: 10px 20px;
-    }
-}
-
-@media (max-width: 640px) {
-    #presentation {
-        margin-top: 0px;
-        flex-direction: column;
-        height: auto;
-        background: linear-gradient(30deg, #FF7327, #FF7327 50%, #4a87b9 40%, #4a87b9);
-    }
-
-    #title-presentation {
-        font-size: 1.75rem;
-    }
-    
-    #description-presentation {
-        font-size: 1.25rem;
-    }
-    
-    .title-main {
-        font-size: 1.35rem;
-        margin: 0px;
-        margin-top: 20px;
-    }
-    
-    .text-main {
-        font-size: 1rem;
-        margin: 0px 0px;
     }
 }
