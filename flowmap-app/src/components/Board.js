@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Column from './Column';
 import axios from 'axios';
 import './css/Board.css';
@@ -90,7 +91,7 @@ export default function Board() {
 
   return (
     <div className="board">
-      <h2 className="board-title">FlowMap</h2>
+      <Link to="/"> <h2 className="board-title">FlowMap</h2></Link>
 
       <button className="btn-new-task" onClick={toggleTaskForm}>
         Nova Tarefa
